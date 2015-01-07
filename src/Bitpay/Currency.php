@@ -6,6 +6,8 @@
 
 namespace Bitpay;
 
+use Bitpay\Client;
+
 /**
  * For the most part this should conform to ISO 4217
  *
@@ -83,6 +85,8 @@ class Currency implements CurrencyInterface
     protected $payoutFields;
 
     /**
+     * @param  string    $code The Currency Code to use, ie USD
+     * @throws Exception       Throws an exception if the Currency Code is not supported
      */
     public function __construct($code = null)
     {
@@ -105,14 +109,14 @@ class Currency implements CurrencyInterface
     /**
      * This will change the $code to all uppercase
      *
-     * @param string $code
-     *
+     * @param  string            $code The Currency Code to use, ie USD
+     * @throws Exception               Throws an exception if the Currency Code is not supported
      * @return CurrencyInterface
      */
     public function setCode($code)
     {
         if (null !== $code && !in_array(strtoupper($code), self::$availableCurrencies)) {
-            throw new \Exception(
+            throw new \Bitpay\Client\ArgumentException(
                 sprintf('The currency code "%s" is not supported.', $code)
             );
         }

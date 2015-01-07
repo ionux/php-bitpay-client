@@ -469,6 +469,12 @@ class Client implements ClientInterface
      */
     public function createToken(array $payload = array())
     {
+        if ($payload !== array()) {
+            if (1 !== preg_match('/^[a-zA-Z0-9]{7}$/', $payload['pairingCode'])) {
+                throw new ArgumentException("pairing code is not legal");
+            }
+        }
+
         $this->request = $this->createNewRequest();
         $this->request->setMethod(Request::METHOD_POST);
         $this->request->setPath('tokens');
@@ -478,7 +484,7 @@ class Client implements ClientInterface
         $body           = json_decode($this->response->getBody(), true);
 
         if (isset($body['error'])) {
-            throw new \Exception($body['error']);
+            throw new \Bitpay\Client\BitpayException($this->response->getStatusCode().": ".$body['error']);
         }
 
         $tkn = $body['data'][0];
@@ -590,9 +596,17 @@ class Client implements ClientInterface
             throw new \Exception('Please set your Private Key');
         }
 
+        if (true == property_exists($this->network, 'isPortRequiredInUrl')) {
+            if ($this->network->isPortRequiredInUrl === true) {
+                $url = $request->getUriWithPort();
+            }
+        } else {
+            $url = $request->getUri();
+        }
+
         $message = sprintf(
             '%s%s',
-            $request->getUri(),
+            $url,
             $request->getBody()
         );
 
@@ -608,6 +622,7 @@ class Client implements ClientInterface
     {
         $request = new Request();
         $request->setHost($this->network->getApiHost());
+        $request->setPort($this->network->getApiPort());
         $this->prepareRequestHeaders($request);
 
         return $request;
