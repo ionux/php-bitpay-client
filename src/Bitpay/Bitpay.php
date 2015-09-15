@@ -2,13 +2,13 @@
 /**
  * PHP Client Library for the new cryptographically secure BitPay API.
  *
- * @copyright  Copyright 2011-2014 BitPay, Inc.
+ * @copyright  Copyright 2011-2015 BitPay, Inc.
  * @author     Integrations Development Team <integrations@bitpay.com>
  * @license    https://raw.githubusercontent.com/bitpay/php-bitpay-client/master/LICENSE The MIT License (MIT)
  * @see        https://github.com/bitpay/php-bitpay-client
  * @package    Bitpay
  * @since      2.0.0
- * @version    2.2.2
+ * @version    3.0.0
  * @filesource
  */
 
@@ -27,10 +27,10 @@ use Bitpay\Resource\Buyer;
  */
 final class Bitpay
 {
-	const NAME    = 'BitPay PHP-Client';
-	const VERSION = '2.2.2';
+    const NAME    = 'BitPay PHP Client';
+    const VERSION = '3.0.0';
 
-	private $client;
+    private $client;
     private $application;
     private $bill;
     private $buyer;
@@ -45,71 +45,68 @@ final class Bitpay
 
     public function __construct($config = array(), $debug = false)
     {
-    	if (false === isset($this->client) || true === empty($this->client)) {
-    		$this->client = new Client($config);
-    	}
+        if (false === isset($this->client) || true === empty($this->client)) {
+            $this->client = new Client($config);
+        }
     }
 
     final public function getVersion()
     {
-    	return self::VERSION;
+        return self::VERSION;
     }
 
     final public function getName()
     {
-    	return self::NAME;
+        return self::NAME;
     }
 
     final public function getClient()
     {
-    	return $this->client;
+        return $this->client;
     }
 
     final public function newClient()
     {
-    	return new Client();
+        return new Client();
     }
 
     final public function createClient()
     {
-    	return $this->newClient();
+        return $this->newClient();
     }
 
     final public function createApplication()
     {
-    	return new Application();
+        return new Application();
     }
 
     final public function newApplication()
     {
-    	return $this->createApplication();
+        return $this->createApplication();
     }
 
     final public function getApplication()
     {
-    	return $this->application;
+        return $this->application;
     }
 
     public function createBill()
     {
-    	return new Bill();
+        return new Bill();
     }
 
     public function getBill()
     {
-    	return $this->bill;
+        return $this->bill;
     }
 
     public function createBuyer()
     {
-    	return new Buyer();
+        return new Buyer();
     }
 
     public function getBuyer()
     {
         return $this->buyer;
     }
-
-
-
 }
