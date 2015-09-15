@@ -1,43 +1,32 @@
 <?php
 /**
- * @license Copyright 2011-2014 BitPay Inc., MIT License
- * see https://github.com/bitpay/php-bitpay-client/blob/master/LICENSE
+ * PHP Client Library for the cryptographically secure BitPay API.
+ *
+ * @copyright  Copyright 2011-2015 BitPay, Inc.
+ * @author     Rich Morgan <rich@bitpay.com>
+ * @license    https://raw.githubusercontent.com/bitpay/php-bitpay-client/master/LICENSE The MIT License (MIT)
+ * @see        https://github.com/bitpay/php-bitpay-client
+ * @package    Bitpay
+ * @since      2.0.0
+ * @version    3.0.0
+ * @filesource
  */
 
 namespace Bitpay\Utility;
 
 /**
- * This class contains all the valid configuration settings that can be used.
- * If you update this file to add new settings, please make sure you update the
- * documentation as well.
- *
- * @see http://symfony.com/doc/current/components/config/definition.html
- *
  * @package Bitpay
  */
 class Configuration
 {
-	/**
-	 * Returns the root directory path for the
-	 * main Bitpay class.
-	 *
-	 * @return string
-	 */
-	protected function getRootDirPath()
-	{
-		return realpath(__DIR__.'/..');
-	}
-
-
     /**
-     * Adds the key_storage node with validation rules
+     * Returns the root directory path for the
+     * main Bitpay class.
      *
-     * key_storage MUST:
-     *     * implement Bitpay\Storage\Storage
-     *     * be a class that can be loaded
+     * @return string
      */
-    protected function addKeyStorageNode()
+    protected function getRootDirPath()
     {
-
+        return realpath(__DIR__ . '/..');
     }
 }
