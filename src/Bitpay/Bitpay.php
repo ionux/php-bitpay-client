@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Client Library for the new cryptographically secure BitPay API.
+ * PHP Client Library for the cryptographically secure BitPay API.
  *
  * @copyright  Copyright 2011-2015 BitPay, Inc.
  * @author     Integrations Development Team <integrations@bitpay.com>
