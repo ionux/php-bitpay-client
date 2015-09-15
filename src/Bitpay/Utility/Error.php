@@ -1,12 +1,20 @@
 <?php
 /**
- * @license Copyright 2011-2014 BitPay Inc., MIT License
- * see https://github.com/bitpay/php-bitpay-client/blob/master/LICENSE
+ * PHP Client Library for the cryptographically secure BitPay API.
+ *
+ * @copyright  Copyright 2011-2015 BitPay, Inc.
+ * @author     Rich Morgan <rich@bitpay.com>
+ * @license    https://raw.githubusercontent.com/bitpay/php-bitpay-client/master/LICENSE The MIT License (MIT)
+ * @see        https://github.com/bitpay/php-bitpay-client
+ * @package    Bitpay
+ * @since      2.0.0
+ * @version    3.0.0
+ * @filesource
  */
 
 namespace Bitpay\Util;
 
-class Error
+abstract class Error
 {
     /**
      * Generates a backtrace and returns an array of associative
@@ -60,7 +68,7 @@ class Error
      */
     final public function log($message, $message_type = 0, $destination = '', $extra_headers = '')
     {
-        return error_log((string) $message, $message_type = 0, $destination = '', $extra_headers = '');
+        return error_log((string)$message, $message_type = 0, $destination = '', $extra_headers = '');
     }
 
     /**
@@ -111,6 +119,7 @@ class Error
                         return false;
                 }
                 break;
+
             case 'exception':
                 switch (strtolower($action)) {
                     case 'restore':
@@ -123,6 +132,7 @@ class Error
                         return false;
                 }
                 break;
+
             default:
                 return false;
         }
