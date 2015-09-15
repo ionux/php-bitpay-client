@@ -1,7 +1,15 @@
 <?php
 /**
- * @license Copyright 2011-2014 BitPay Inc., MIT License
- * see https://github.com/bitpay/php-bitpay-client/blob/master/LICENSE
+ * PHP Client Library for the cryptographically secure BitPay API.
+ *
+ * @copyright  Copyright 2011-2015 BitPay, Inc.
+ * @author     Rich Morgan <rich@bitpay.com>
+ * @license    https://raw.githubusercontent.com/bitpay/php-bitpay-client/master/LICENSE The MIT License (MIT)
+ * @see        https://github.com/bitpay/php-bitpay-client
+ * @package    Bitpay
+ * @since      2.0.0
+ * @version    3.0.0
+ * @filesource
  */
 
 namespace Bitpay;
@@ -14,9 +22,8 @@ class Autoloader
     /**
      * Register the autoloader, by default this will put the BitPay autoloader
      * first on the stack, to append the autoloader, pass `false` as an argument.
-     *
-     * Some applications will throw exceptions if the class isn't found and
-     * some are not compatible with PSR standards.
+     * Some applications will throw exceptions if the class isn't found and some
+     * are not compatible with PSR standards.
      *
      * @param boolean $prepend
      */
